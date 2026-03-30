@@ -2,8 +2,11 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 import google.generativeai as genai  
+from dotenv import load_dotenv
+import os
 
-genai.configure(api_key="AIzaSyD-sE2PQlkrH_eIcG2ZPY8YJPpYjp-3NRg")
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
 
 def generate_response(message):
     model = genai.GenerativeModel('gemini-1.5-flash')  
